@@ -1,5 +1,9 @@
-let a = 12, b = 5;
+import * as numbers from './numbers.js';
+import * as arrays from './arrays.js';
 
-var result = Math.floor(a/b); 
+// numbers.divide();
 
-console.log(window.result);
+// arrays.mixedValues();
+// arrays.pushPop();
+// arrays.removeFirstElement();
+arrays.splice();
