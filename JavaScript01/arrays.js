@@ -1,3 +1,4 @@
+// arrays in js support mixed values, although this is not a best practice.
 export function mixedValues(){
     let values = [1, "aaa", true, 4.6];
 
@@ -12,9 +13,7 @@ export function pushPop(){
     let values = [];
 
     values.push(21);
-
     values.push(-12);
-
     values.push(42);
 
     console.log(values);
@@ -24,7 +23,6 @@ export function pushPop(){
     console.log(`element ${removedElement} was removed.`);
     console.log(values);
 }
-
 
 //remove first element from an array
 export function removeFirstElement(){
