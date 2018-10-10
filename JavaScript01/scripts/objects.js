@@ -133,8 +133,13 @@ function creatingObjects(){
         // a function inside an object is called a method.
         play(){
             console.log(`playing '${this.title}' from object literal`);
+        },
+        // this is another way to define a method.
+        stop: function(){
+            console.log('stopping the video...');
         }
     }
+    video.stop();
 
     function createObj(title){
         return {
