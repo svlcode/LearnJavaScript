@@ -8,10 +8,7 @@ let stayBtn = document.getElementById('stay-btn');
 let gameStarted = false,
     gameOver = false,
     playerWon = false,
-    dealerCards = [],
-    playerCards = [],
-    dealerScore = 0,
-    playerScore = 0,
+    draw = false,
     dealer = {},
     player = {},
     deck = [];
@@ -23,16 +20,17 @@ newGameBtn.addEventListener('click', function(){
     gameStarted = true;
     gameOver = false;
     playerWon = false;
+    draw = false;
     
     deck = new Deck();
 
     dealer = new Player();
     dealer.addCard(deck.getNextCard());
+    dealer.addCard(deck.getNextCard());
     
     player = new Player();
     player.addCard(deck.getNextCard());
-
-    playerCards = [deck.getNextCard(), deck.getNextCard()];
+    player.addCard(deck.getNextCard());
 
     newGameBtn.style.display = 'none';
     hitBtn.style.display = 'inline';
@@ -42,8 +40,39 @@ newGameBtn.addEventListener('click', function(){
 
 hitBtn.addEventListener('click' , function(){
     player.addCard(deck.getNextCard());
-    dealer.addCard(deck.getNextCard());
+    takeDealerCard();
+    checkScore();
+
+    showStatus();
 });
+
+function checkScore(){
+    if(player.score >= 21 || dealer.score >= 21){
+        gameOver = true;
+        if(player.score === 21 && dealer.score === 21){
+            draw = true;
+        }
+        if(player.score == 21 || (dealer.score > 21 && player.score < dealer.score)){
+            playerWon = true;
+        }
+        else if (player.score > 21){
+            playerWon = false;
+        }
+    }
+}
+
+stayBtn.addEventListener('click', function(){
+   
+    takeDealerCard();
+    checkScore();
+    showStatus();
+});
+
+function takeDealerCard(){
+    if(dealer.score < 21){
+        dealer.addCard(deck.getNextCard());
+    }
+}
 
 function Player(){
     this.cards = [];
@@ -51,10 +80,29 @@ function Player(){
         this.cards.push(card);
     }
 
+    this.getPlayerCardString = function(){
+        let playerCardString = '';
+        for (let i = 0; i < this.cards.length; i++) {
+            playerCardString += this.cards[i].getCardString() + '\n';
+        }
+        return playerCardString;
+    }
+
     Object.defineProperty(this, 'score',{
         get: function(){
             let score = 0;
-            
+            let hasAce = false;
+            for (let i = 0; i < this.cards.length; i++) {
+                let card = this.cards[i];
+                score += card.getNumericValue();
+                if(card.value === 'Ace'){
+                    hasAce = true;
+                }
+            }
+            if(hasAce && score + 10 <= 21) {
+                return score + 10;
+            }
+
             return score;
         }
     });
@@ -65,6 +113,30 @@ function Card(suit, value){
     this.value = value;
     this.getCardString = function(){
         return this.value + ' of ' + this.suit;
+    }
+    this.getNumericValue = function(){
+        switch (this.value) {
+            case 'Ace':
+                return 1;
+            case 'Two':
+                return 2;
+            case 'Three':
+                return 3;
+            case 'Four':
+                return 4;
+            case 'Five':
+                return 5;
+            case 'Six':
+                return 6;
+            case 'Seven':
+                return 7;
+            case 'Eight':
+                return 8;
+            case 'Nine':
+                return 9;
+            default:
+                return 10;
+        }
     }
 }
 
@@ -105,10 +177,28 @@ function Deck(){
 }
 
 function showStatus(){
-    if(!gameStarted)
-    {
+    if(!gameStarted){
         textArea.innerText = 'Welcome to Blackjack!';
+        return;
     }
-    
+
+    textArea.innerText = `Dealer has:\n${dealer.getPlayerCardString()}(score: ${dealer.score})\n\n ` + 
+    `You have:\n${player.getPlayerCardString()}(score: ${player.score})\n\n `;
+
+    if(gameOver){
+        if(playerWon) {
+            textArea.innerText += 'You Win!'
+        }
+        else if (draw){
+            textArea.innerText += 'Draw!'
+        }
+        else{
+            textArea.innerText += 'Dealer Wins!'
+        }
+        newGameBtn.style.display = 'inline';
+        hitBtn.style.display = 'none';
+        stayBtn.style.display = 'none';
+    }
+
 }
 
