@@ -40,42 +40,62 @@ newGameBtn.addEventListener('click', function(){
 
 hitBtn.addEventListener('click' , function(){
     player.addCard(deck.getNextCard());
-    takeDealerCard();
+    checkDealerDrawsCard();
     checkScore();
-
     showStatus();
 });
 
+stayBtn.addEventListener('click', function(){
+    gameOver = true;
+    checkDealerDrawsCard();
+    checkScore();
+    showStatus();
+});
+
+function checkDealerDrawsCard(){
+    if(dealer.getScore() <  player.getScore() ){
+        while(dealer.getScore() < 21 && dealer.getScore() <  player.getScore()){
+            takeDealerCard();
+        }
+    }
+}
+
 function checkScore(){
-    if(player.score >= 21 || dealer.score >= 21){
+    let playerScore = player.getScore();
+    let dealerScore = dealer.getScore();
+    if(playerScore >= 21 || dealerScore >= 21){
         gameOver = true;
-        if(player.score === 21 && dealer.score === 21){
+        if(playerScore === 21 && dealerScore === 21){
             draw = true;
         }
-        if(player.score == 21 || (dealer.score > 21 && player.score < dealer.score)){
+        if(playerScore == 21 || (dealerScore > 21 && playerScore < dealerScore)){
             playerWon = true;
         }
-        else if (player.score > 21){
+        else if (playerScore > 21){
+            playerWon = false;
+        }
+    }
+    else if(gameOver){
+        if(playerScore > dealerScore){
+            playerWon = true;
+        }
+        else{
             playerWon = false;
         }
     }
 }
 
-stayBtn.addEventListener('click', function(){
-   
-    takeDealerCard();
-    checkScore();
-    showStatus();
-});
+
 
 function takeDealerCard(){
-    if(dealer.score < 21){
+    if(dealer.getScore() < 21){
         dealer.addCard(deck.getNextCard());
     }
 }
 
 function Player(){
     this.cards = [];
+
     this.addCard = function(card){
         this.cards.push(card);
     }
@@ -88,9 +108,8 @@ function Player(){
         return playerCardString;
     }
 
-    Object.defineProperty(this, 'score',{
-        get: function(){
-            let score = 0;
+    this.getScore = function(){
+        let score = 0;
             let hasAce = false;
             for (let i = 0; i < this.cards.length; i++) {
                 let card = this.cards[i];
@@ -102,18 +121,18 @@ function Player(){
             if(hasAce && score + 10 <= 21) {
                 return score + 10;
             }
-
             return score;
-        }
-    });
+    }
 }
 
 function Card(suit, value){
     this.suit = suit;
     this.value = value;
+    
     this.getCardString = function(){
         return this.value + ' of ' + this.suit;
     }
+    
     this.getNumericValue = function(){
         switch (this.value) {
             case 'Ace':
@@ -142,7 +161,6 @@ function Card(suit, value){
 
 function Deck(){
     let cards = getCards();
-    
 
     function getCards() {
         let cards = [];
@@ -182,8 +200,8 @@ function showStatus(){
         return;
     }
 
-    textArea.innerText = `Dealer has:\n${dealer.getPlayerCardString()}(score: ${dealer.score})\n\n ` + 
-    `You have:\n${player.getPlayerCardString()}(score: ${player.score})\n\n `;
+    textArea.innerText = `Dealer has:\n${dealer.getPlayerCardString()}(score: ${dealer.getScore()})\n\n ` + 
+    `You have:\n${player.getPlayerCardString()}(score: ${player.getScore()})\n\n `;
 
     if(gameOver){
         if(playerWon) {
