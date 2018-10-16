@@ -53,31 +53,41 @@ stayBtn.addEventListener('click', function(){
 });
 
 function checkDealerDrawsCard(){
-    if(dealer.getScore() <  player.getScore() ){
-        while(dealer.getScore() < 21 && dealer.getScore() <  player.getScore()){
-            takeDealerCard();
-        }
+    while(dealer.getScore() <  player.getScore() && dealer.getScore() <= 21 && player.getScore() <= 21){
+        takeDealerCard();
     }
 }
 
 function checkScore(){
     let playerScore = player.getScore();
     let dealerScore = dealer.getScore();
-    if(playerScore >= 21 || dealerScore >= 21){
+    if(playerScore > 21 || dealerScore > 21){
         gameOver = true;
-        if(playerScore === 21 && dealerScore === 21){
-            draw = true;
+        if(playerScore > 21 && dealerScore > 21){
+            if(playerScore < dealerScore){
+                playerWon = true;
+            }
+            else{
+                playerWon = false;    
+            }
         }
-        if(playerScore == 21 || (dealerScore > 21 && playerScore < dealerScore)){
+        else if (playerScore < dealerScore){
             playerWon = true;
         }
-        else if (playerScore > 21){
+        else{
             playerWon = false;
         }
+    }
+    else  if(playerScore === 21 && dealerScore === 21){
+        gameOver = true;
+        draw = true;
     }
     else if(gameOver){
         if(playerScore > dealerScore){
             playerWon = true;
+        }
+        else if (playerScore === dealerScore){
+            draw = true;
         }
         else{
             playerWon = false;
