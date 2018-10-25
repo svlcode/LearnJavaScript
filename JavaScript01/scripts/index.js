@@ -7,6 +7,7 @@ import * as bf from './functions/basicFunctions.js';
 import * as ff from './functions/factoryFunctions.js';
 import * as cf from './functions/constructorFunctions.js';
 import * as vlc from './var_let_const.js';
+import * as rst from './rest_parameters.js';
 
 numbers.divide();
 arrays.mixedValues();
@@ -22,3 +23,4 @@ ff.run();
 cf.run();
 vlc.run();
 bf.run();
+rst.run();
