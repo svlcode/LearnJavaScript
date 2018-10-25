@@ -4,6 +4,29 @@ export function run(){
     removeFirstElement();
     splice();
     restParameters();
+    destructingArrays();
+}
+
+function destructingArrays(){
+    let carIds = [1, 2, 3, 4];
+
+    let [car1, car2, car3] = carIds;
+
+    console.log(car3);
+
+    // asign the first element to car1 and
+    // asign the rest of the elements to the remainingCars variable
+    let remainingCars;
+    [car1, ...remainingCars] = carIds;
+
+    console.log(car1, remainingCars);
+
+
+    // skip the first two elements and
+    // asign the rest of the elements to the remainingArray variable
+    let [,, ...remainingArray] = carIds;
+
+    console.log(remainingArray);
 }
 
 // arrays in js support mixed values, although this is not a best practice.
