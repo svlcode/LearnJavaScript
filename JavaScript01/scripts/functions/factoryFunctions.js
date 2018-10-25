@@ -1,13 +1,10 @@
 export function run(){
-
-    
-
     // Factory Function
     function createCircle(radius) {
         return {
             // if the key and value is the same, the key can be removed
             radius, // this is equivalent to radius: radius
-            draw() { // this is equivalent draw: function() {
+            draw() { // this is a shorthand equivalent to draw: function() {
                 console.log(`drawing a circle with a radius of ${this.radius}...`);
             }
         };

@@ -1,7 +1,7 @@
 export function run() {
     // Constructor Functions
     // the naming convention for Constructor Functions is to use PascalNotation 
-    // (that is that they should begin with a Capital Letter.)
+    // (that is that they should begin with a Capital Letter)
 
     function Circle(radius) {
         this.radius = radius;

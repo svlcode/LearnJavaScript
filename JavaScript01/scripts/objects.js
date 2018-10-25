@@ -125,9 +125,9 @@ function extendingObjects() {
     
 }
 
+// there are multiple ways to create an object
 function creatingObjects(){
     // this is an object literal. 
-    // this is one way to define an object
     const video = {
         title: 'video1',
         // a function inside an object is called a method.
@@ -141,6 +141,7 @@ function creatingObjects(){
     }
     video.stop();
 
+    // this is a factory function.
     function createObj(title){
         return {
             title,
@@ -153,6 +154,7 @@ function creatingObjects(){
     const video1 =  createObj('video2');
     video1.play();
 
+    // this is a constructor function
     function Video(title){
         this.title = title;
         this.play = function(){
