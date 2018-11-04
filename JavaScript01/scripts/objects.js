@@ -4,8 +4,16 @@ export function run(){
     iterateOverProperties();
     privatePropertiesAndMethods();
     gettersAndSetters();
+    destructuringObjects();
 }
 
+function destructuringObjects() {
+    let car = { id: 23, style: 'convertible' };
+    let { id, style } = car;
+    // or 
+    ({ id, style } = car);
+    console.log(id, style);
+}
 
 function gettersAndSetters(){
     function Circle(radius){

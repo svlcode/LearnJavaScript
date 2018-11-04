@@ -7,15 +7,20 @@ import * as bf from './functions/basicFunctions.js';
 import * as ff from './functions/factoryFunctions.js';
 import * as cf from './functions/constructorFunctions.js';
 import * as vlc from './var_let_const.js';
+import * as sps from './spread_syntax.js';
+import * as rst from './rest_parameters.js';
+import * as cnv from './conversions.js';
 
 // num.divide();
-// Truthy();
+Truthy();
 // Falsy();
-// thisKey.Run();
-// obj.run();
+thisKey.run();
+//obj.run();
 // ff.run();
 // cf.run();
 // vlc.run();
 // bf.run();
-
-arr.run();
+//arr.run();
+// sps.run();
+//rst.run();
+//cnv.run();

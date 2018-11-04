@@ -3,7 +3,7 @@
 // when dealing with a regular function 'this' references the global object
 // function -> global (window, global)
 
-export function Run(){
+export function run(){
         
     console.log(this);
 
@@ -28,7 +28,7 @@ export function Run(){
 
     function Creator(title){
         this.caption = title;
-        // if this is function is called with new, 'this' will reference a new empty object.
+        // if this function is called with new, 'this' will reference a new empty object.
         console.log(this.caption); 
     }
 
@@ -37,5 +37,46 @@ export function Run(){
 
      console.log(antoherObject);
 
+    // change the context of 'this'
+    let car = {
+        carId: 123,
+        getId: function(){
+            return this.carId;
+        }
+    }
+
+
+    let newCar = { carId: 456 };
+    // using call, the context of the method can be changed. here the 'newCar' becomes the context of the method getId
+    console.log(car.getId.call(newCar));
+
+    let obj = {
+        objId: 555,
+        getId: function(prefix){
+            return prefix + this.objId;
+        }
+    }
+
+    let newObj = {
+        objId: 222
+    };
     
+    // apply acts like call, except that apply accepts an array of arguments
+    console.log(obj.getId.apply(newObj, ['ID: ']));
+
+    // make a copy of a function and change its context by using bind
+    
+    let bike = {
+        color: 'black',
+        getColor: function(){
+            return this.color;
+        }
+    }
+
+    let newBike = {
+         color: 'yellow'
+    }
+
+    let newFunction = bike.getColor.bind(newBike);
+    console.log(newFunction());
 }
