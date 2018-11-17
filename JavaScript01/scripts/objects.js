@@ -5,6 +5,33 @@ export function run(){
     privatePropertiesAndMethods();
     gettersAndSetters();
     destructuringObjects();
+    prototypes();
+}
+
+// one advantage of using prototypes is that no more copies of the functions will be created for each object created using a constructor function.
+function prototypes(){
+    function Car(carId){
+        this.carId = carId;
+    }
+
+    Car.prototype.start = function(){
+        console.log('start: ' + this.carId);
+    }
+
+    let myCar = new Car(231);
+    myCar.start();
+
+    // another use case of using prototypes is that it can be used to extend objects... polyfills
+    polyfills();
+}
+
+// expanding objects with prototypes...
+function polyfills(){
+    String.prototype.hello = function(){
+        return this.toString() + ' hello';
+    }
+
+    console.log('test'.hello());
 }
 
 function destructuringObjects() {
