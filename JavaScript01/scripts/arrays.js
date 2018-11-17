@@ -5,6 +5,38 @@ export function run(){
     splice();
     restParameters();
     destructingArrays();
+    iteratingThroughArrays();
+}
+
+function iteratingThroughArrays(){
+    let cars = [
+        { carId: 123, style: "sedan" },
+        { carId: 456, style: "convertible" },
+        { carId: 789, style: "sedan" }
+    ];
+
+    cars.forEach(car => console.log(car));
+    
+    console.log('\n');
+    
+    cars.forEach((car , index) => console.log(car, index));
+
+    console.log('\n');
+
+    console.log('Filter only sedans:')
+    // filter works like Where in C#'s LINQ
+    let sedans = cars.filter(car => car.style == 'sedan');
+    console.log(sedans);
+
+    // this checks all the records to fulfill this condition is the LINQ equivalent of All()
+    let result = cars.every(car => car.carId > 0);
+
+    console.log('all cars have an id greater than zero: ' + result);
+
+    // returs the first element in the array where the predicate is true.
+    let car = cars.find(c => c.carId > 300);
+
+    console.log('first car which has an id greater than 300', car);
 }
 
 function destructingArrays(){
