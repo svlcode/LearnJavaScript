@@ -38,4 +38,57 @@ export function run(){
     `);
 
     sayHelloFunc('vio');
+
+   
+
+    arrowFunctions();
+    defaultParameters();
+}
+
+function defaultParameters(){
+
+    let trackCar = function(carId, city = 'NY'){
+        console.log(`tracking car ${carId} in ${city}`);
+    }
+
+    trackCar('toyota');
+
+    trackCar('ford', 'Chicago');
+}
+
+ // arrow functions
+// do not have their own "this" value.
+// "this" refers to the enclosing context.
+let arrowFunctions = () => {
+    // arrow function without parameter
+    // the return statement is optional here because this is the single line in the function
+    // when there are no parameters or multiple parameters we need the opening and closing paranthesis
+    let getId = () => 123;
+
+    console.log(getId());
+
+    // when there is only one parameter the opening and closing paranthesis are not needed
+    let getPrefix = prefix => prefix + 124;
+
+    // convention for using parameter or not with "underscore"
+
+    let getValue = _ => 256;
+
+    console.log(getValue());
+
+    console.log(getPrefix('ID: '));
+
+    let getPrefixSuffix = (pref, suff) => pref + 125 + suff;
+
+    console.log(getPrefixSuffix('ID: ', ' !!!'))
+
+    // the return statement is NOT optional here because this function has multiple lines of code
+    let calculate = (number1, number2) => {
+        let temp = number1;
+        number1 = number2;
+        number2 = temp;
+        return number2 + number1;
+    };
+
+    console.log(calculate(4,6));
 }
