@@ -40,11 +40,12 @@ function iteratingThroughArrays(){
 }
 
 function destructingArrays(){
+    console.log('begin destructing arrays...');
     let carIds = [1, 2, 3, 4];
 
     let [car1, car2, car3] = carIds;
 
-    console.log(car3);
+    console.log('car3:' + car3);
 
     // asign the first element to car1 and
     // asign the rest of the elements to the remainingCars variable
@@ -59,6 +60,7 @@ function destructingArrays(){
     let [,, ...remainingArray] = carIds;
 
     console.log(remainingArray);
+    console.log('end destructing arrays...');
 }
 
 // arrays in js support mixed values, although this is not a best practice.
