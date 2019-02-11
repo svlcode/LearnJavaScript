@@ -1,6 +1,8 @@
 export function run(){
 
-    //rest paramters is a modern feature of JS which allows a function to store multiple arguments into an array.
+    // rest parameters are arrays.
+    // rest paramters is a modern feature of JS which allows a function to store multiple arguments into an array.
+    // rest parameters must be defined as the last parameter of the function.
     function sendCars(dayOfWeek, number, ...allCarIds){
         console.log('today is ' + dayOfWeek);
         console.log('my number is ' + number);
