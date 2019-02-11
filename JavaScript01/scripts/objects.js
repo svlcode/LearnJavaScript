@@ -37,7 +37,8 @@ function polyfills(){
 function destructuringObjects() {
     let car = { id: 23, style: 'convertible' };
     let { id, style } = car;
-    // or 
+
+    // or like the snippet below if the destructuring comes after variable declaration
     ({ id, style } = car);
     console.log(id, style);
 }
