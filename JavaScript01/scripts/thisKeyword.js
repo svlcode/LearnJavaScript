@@ -2,6 +2,7 @@
 
 // when dealing with a regular function 'this' references the global object
 // function -> global (window, global)
+// this usually represents the context object in which the function was defined.
 
 export function run(){
         
@@ -79,4 +80,7 @@ export function run(){
 
     let newFunction = bike.getColor.bind(newBike);
     console.log(newFunction());
+    newBike.test = newFunction;
+    console.log(newBike.test());
+    
 }
