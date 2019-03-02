@@ -14,6 +14,7 @@ import * as wjons from './working_with_JSON.js';
 import * as cls from './classes.js';
 import * as mod from './modules.js';
 import * as opr from './operators.js';
+import * as clo from './closures.js';
 
 //num.divide();
 //Truthy();
@@ -31,4 +32,5 @@ import * as opr from './operators.js';
 //wjons.run();
 //cls.run();
 //mod.run();
-opr.run();
+//opr.run();
+clo.run();
