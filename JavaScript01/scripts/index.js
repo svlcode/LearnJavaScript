@@ -15,11 +15,13 @@ import * as cls from './classes.js';
 import * as mod from './modules.js';
 import * as opr from './operators.js';
 import * as clo from './closures.js';
+import * as arw from './functions/arrowFunctions.js';
+import * as dfp from './functions/defaultParameters.js'
 
 //num.divide();
 //Truthy();
 //Falsy();
-thisKey.run();
+//thisKey.run();
 //obj.run();
 //ff.run();
 //cf.run();
@@ -34,3 +36,5 @@ thisKey.run();
 //mod.run();
 //opr.run();
 //clo.run();
+//arw.run();
+dfp.run();
