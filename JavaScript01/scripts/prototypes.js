@@ -1,3 +1,4 @@
+// prototypes are used to expand objects (similar to extension methods in C#).
 export function run(){
     function Car(id){
         this.carId = id;
@@ -13,5 +14,11 @@ export function run(){
 
     let car = new Car(123);
     car.start();
+
+    String.prototype.sayHello = function(){
+        return 'Hello ' + this.toString();
+    }
+
+    console.log('Vio'.sayHello());
 
 }
