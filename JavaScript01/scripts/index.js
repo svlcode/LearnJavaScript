@@ -17,6 +17,7 @@ import * as opr from './operators.js';
 import * as clo from './closures.js';
 import * as arw from './functions/arrowFunctions.js';
 import * as dfp from './functions/defaultParameters.js'
+import * as pro from './prototypes.js'
 
 //num.divide();
 //Truthy();
@@ -37,4 +38,5 @@ import * as dfp from './functions/defaultParameters.js'
 //opr.run();
 //clo.run();
 //arw.run();
-dfp.run();
+//dfp.run();
+pro.run();
