@@ -5,37 +5,6 @@ export function run(){
     inheritance();
 }
 
-function inheritance(){
-    class Vehicle {
-        constructor(){
-            this.type = 'vehicle'
-        }
-
-        start(){
-            return `Starting ${this.type}`;
-        }
-    }
-
-    class Car extends Vehicle {
-        
-        constructor() {
-            super();
-            this.type = 'car';
-        }
-
-        // polymorfism
-        start() {
-            return 'Hey! I am ' + super.start();
-        }
-    }
-
-    let car = new Car();
-    console.log(car.start());
-
-}
-
-
-
 function basicClasses(){
     class Car{
         // this is the constructor of the class
@@ -53,4 +22,33 @@ function basicClasses(){
     console.log(car.id);
 
     console.log(car.start());
+}
+
+function inheritance(){
+    class Vehicle {
+        constructor(){
+            this.type = 'vehicle'
+        }
+
+        start(){
+            return `Starting ${this.type}`;
+        }
+    }
+
+    class Car extends Vehicle {
+        
+        constructor() {
+            super(); // this is required
+            this.type = 'car';
+        }
+
+        // polymorfism
+        start() {
+            return 'Hey! I am ' + super.start();
+        }
+    }
+
+    let car = new Car();
+    console.log(car.start());
+
 }
