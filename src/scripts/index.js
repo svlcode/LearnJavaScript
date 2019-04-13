@@ -16,8 +16,10 @@ import * as mod from './fundamentals/modules.js';
 import * as opr from './fundamentals/operators.js';
 import * as clo from './fundamentals/closures.js';
 import * as arw from './fundamentals/functions/arrowFunctions.js';
-import * as dfp from './fundamentals/functions/defaultParameters.js'
-import * as pro from './fundamentals/prototypes.js'
+import * as dfp from './fundamentals/functions/defaultParameters.js';
+import * as pro from './fundamentals/prototypes.js';
+import * as err from './fundamentals/errors.js';
+import * as prm from './fundamentals/promises.js';
 
 // num.divide();
 // Truthy();
@@ -40,8 +42,15 @@ import * as pro from './fundamentals/prototypes.js'
 // arw.run();
 // dfp.run();
 // pro.run();
+// err.run();
+prm.run();
 
 let ajaxDemoBtn = window.document.getElementById('ajax-demo');
 ajaxDemoBtn.addEventListener('click', function(){
     window.location.href='ajax.html';
+});
+
+let timersDemoBtn = window.document.getElementById('timers-demo');
+timersDemoBtn.addEventListener('click', function(){
+    window.location.href = 'timers.html';
 });
