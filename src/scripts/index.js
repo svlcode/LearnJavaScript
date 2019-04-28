@@ -20,6 +20,7 @@ import * as dfp from './fundamentals/functions/defaultParameters.js';
 import * as pro from './fundamentals/prototypes.js';
 import * as err from './fundamentals/errors.js';
 import * as prm from './fundamentals/promises.js';
+import * as http_jquery from './fundamentals/http_request_using_jquery.js';
 
 // num.divide();
 // Truthy();
@@ -44,6 +45,7 @@ import * as prm from './fundamentals/promises.js';
 // pro.run();
 // err.run();
 prm.run();
+//http_jquery.run();
 
 let ajaxDemoBtn = window.document.getElementById('ajax-demo');
 ajaxDemoBtn.addEventListener('click', function(){
@@ -53,4 +55,9 @@ ajaxDemoBtn.addEventListener('click', function(){
 let timersDemoBtn = window.document.getElementById('timers-demo');
 timersDemoBtn.addEventListener('click', function(){
     window.location.href = 'timers.html';
+});
+
+let formsDemoBtn = window.document.getElementById('forms-demo');
+formsDemoBtn.addEventListener('click', function(){
+    window.location.href = 'forms.html';
 });

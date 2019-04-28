@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Forms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h2>Preventing submit</h2>
+    <form action="/mypath" method="POST" id="myForm">
+        <input type="text" name="username" placeholder="Username">
+        <span id="username-error"></span>
+        <br>
+        <input type="password" name="password" placeholder="Password">
+        <span id="password-error"></span>
+        <br>
+        <button type="submit">Submit</button>
+    </form>    
+    <script src="./scripts/forms.js"></script>
+</body>
+</html>
