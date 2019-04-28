@@ -8,6 +8,83 @@ export function run(){
     prototypes();
 }
 
+
+// there are multiple ways to create an object
+function creatingObjects(){
+    // this is an object literal. 
+    const video = {
+        title: 'video1',
+        // a function inside an object is called a method.
+        play(){
+            console.log(`playing '${this.title}' from object literal`);
+        },
+        // this is another way to define a method.
+        stop: function(){
+            console.log('stopping the video...');
+        }
+    }
+    video.stop();
+
+    // this is a factory function.
+    function createObj(title){
+        return {
+            title,
+            play() {
+                console.log(`playing '${this.title}' from a factory function`);
+            }
+        }
+    }
+
+    const video1 =  createObj('video2');
+    video1.play();
+
+    // this is a constructor function
+    function Video(title){
+        this.title = title;
+        this.play = function(){
+            console.log(`playing '${this.title}' from a constructor function`);
+        }
+    }
+
+    const video2 = new Video('video3');
+    video2.play();
+}
+
+
+// objects in JS can be extended or trimmed dinamically...
+function extendingObjects() {
+    // this is an object literal. 
+    // this is one way to define a function
+    const video = {
+        title: 'my video title',
+        // a function inside an object is called a method.
+        play(){
+            console.log(`playing '${this.title}' from extending objects.`);
+        }
+    }
+
+    video.play();
+
+    // adding a new method to an object.
+    // extending the object with another method...
+    video.stop = function(){
+        console.log('video stopped.');
+    }
+
+    video.stop();
+
+    // deletes a property or a method
+    delete video.stop;
+
+    video.location = { x: 1 };
+
+    // this is another way to define a property
+    const propertyName = 'frame rate';
+    video[propertyName] = { x: 2 };
+
+    delete video[propertyName];
+}
+
 // one advantage of using prototypes is that no more copies of the functions will be created for each object created using a constructor function.
 function prototypes(){
     function Car(carId){
@@ -123,81 +200,4 @@ function iterateOverProperties(){
     const keys = Object.keys(circle1);
     console.log(keys);
 
-}
-
-// objects in JS can be extended or trimmed dinamically...
-function extendingObjects() {
-    // this is an object literal. 
-    // this is one way to define a function
-    const video = {
-        title: 'my video title',
-        // a function inside an object is called a method.
-        play(){
-            console.log(`playing '${this.title}' from extending objects.`);
-        }
-    }
-
-    video.play();
-
-    // adding a new method to an object.
-    // extending the object with another method...
-    video.stop = function(){
-        console.log('video stopped.');
-    }
-
-    video.stop();
-
-    // deletes a property or a method
-    delete video.stop;
-
-    video.location = { x: 1 };
-
-    // this is another way to define a property
-    const propertyName = 'frame rate';
-    video[propertyName] = { x: 2 };
-
-    delete video[propertyName];
-
-    
-}
-
-// there are multiple ways to create an object
-function creatingObjects(){
-    // this is an object literal. 
-    const video = {
-        title: 'video1',
-        // a function inside an object is called a method.
-        play(){
-            console.log(`playing '${this.title}' from object literal`);
-        },
-        // this is another way to define a method.
-        stop: function(){
-            console.log('stopping the video...');
-        }
-    }
-    video.stop();
-
-    // this is a factory function.
-    function createObj(title){
-        return {
-            title,
-            play() {
-                console.log(`playing '${this.title}' from a factory function`);
-            }
-        }
-    }
-
-    const video1 =  createObj('video2');
-    video1.play();
-
-    // this is a constructor function
-    function Video(title){
-        this.title = title;
-        this.play = function(){
-            console.log(`playing '${this.title}' from a constructor function`);
-        }
-    }
-
-    const video2 = new Video('video3');
-    video2.play();
 }
