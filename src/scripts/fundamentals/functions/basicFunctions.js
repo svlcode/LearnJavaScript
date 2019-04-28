@@ -2,6 +2,56 @@
 // In JS, functions are objects.
 export function run(){
     
+    
+    functionStatements();
+
+    functionExpressions();
+    
+    passingFunctionArguments();
+
+    
+   
+
+    arrowFunctions();
+    defaultParameters();
+}
+
+String.prototype.format = function() {
+    let myString = this;
+    for (let arg in arguments) {
+      myString = myString.replace(new RegExp("\\{" + arg + "\\}", 'g'), arguments[arg]);
+    }
+    return myString;
+  }
+
+function composingDynamicFunctions() {
+    
+    let saying = 'hello';
+    let param = 'name';
+    let functionBody = `console.log(${saying} ` 
+
+    const sayHelloFunc = new Function('name',`
+    console.log('hello ' + name);
+    `);
+
+    sayHelloFunc('vio');
+
+}
+
+
+function passingFunctionArguments() {
+     // passing a function as an argument to another function.
+
+     function execute(func){
+        func();
+    }
+
+    execute(action);
+}
+
+// statements do not produce an immediate value.
+function functionStatements() {
+    // this is function statement
     // name is called a parameter here
     function sayHello(name){
         console.log(`hello ${name}`);
@@ -17,32 +67,18 @@ export function run(){
     let result = calculateSum(2,4);
 
     console.log(result);
+}
 
-    // setting a variable to point to a function
+
+// expressions produce a value
+function functionExpressions() {
+    // this is a function expression which    
+    // sets a variable to point to a function
     let action = function (){
         console.log('performing an action');
     }
 
     action()
-
-    // passing a function as an argument to another function.
-
-    function execute(func){
-        func();
-    }
-
-    execute(action);
-
-    const sayHelloFunc = new Function('name',`
-    console.log('hello ' + name);
-    `);
-
-    sayHelloFunc('vio');
-
-   
-
-    arrowFunctions();
-    defaultParameters();
 }
 
 function defaultParameters(){
