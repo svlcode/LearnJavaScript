@@ -2,18 +2,17 @@
 // In JS, functions are objects.
 export function run(){
     
-    
     functionStatements();
 
     functionExpressions();
     
     passingFunctionArguments();
 
-    
-   
-
     arrowFunctions();
+
     defaultParameters();
+
+    composingDynamicFunctions();
 }
 
 String.prototype.format = function() {
@@ -28,16 +27,11 @@ function composingDynamicFunctions() {
     
     let saying = 'hello';
     let param = 'name';
-    let functionBody = `console.log(${saying} ` 
 
-    const sayHelloFunc = new Function('name',`
-    console.log('hello ' + name);
-    `);
+    const sayHelloFunc = new Function(param, `console.log('${saying} ' + ${param});`);
 
     sayHelloFunc('vio');
-
 }
-
 
 function passingFunctionArguments() {
      // passing a function as an argument to another function.
@@ -46,7 +40,7 @@ function passingFunctionArguments() {
         func();
     }
 
-    execute(action);
+    execute(() => { console.log('this is a function passed as an argument to another function.')});
 }
 
 // statements do not produce an immediate value.
