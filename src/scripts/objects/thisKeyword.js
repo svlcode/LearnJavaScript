@@ -1,5 +1,4 @@
-// when dealing with an object 'this' references the object that is curently used.
-
+// when dealing with an object, 'this' references the object that is curently used.
 // when dealing with a regular function 'this' references the global object
 // function -> global (window, global)
 // this usually represents the context object in which the function was defined.
