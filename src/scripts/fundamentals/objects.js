@@ -14,6 +14,7 @@ function creatingObjects(){
     // this is an object literal. 
     const video = {
         title: 'video1',
+        duration: 80,
         // a function inside an object is called a method.
         play(){
             console.log(`playing '${this.title}' from object literal`);
@@ -24,6 +25,11 @@ function creatingObjects(){
         }
     }
     video.stop();
+
+    // properties can be access with 'dot notation'
+    console.log(video.duration);
+    // or with squary brackets 'array like'
+    console.log(video['title']);
 
     // this is a factory function.
     function createObj(title){
